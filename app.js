@@ -1,20 +1,29 @@
-const express = require('express')
-const mongoose = require('mongoose')
+const express = require("express");
 const methodOverride = require("method-override");
-const path = require('path')
+const path = require("path");
+const mongoose = require("mongoose");
 
-const app = express()
+mongoose
+  .connect("mongodb://localhost:27017/yelp-camp")
+  .then(() => {
+    console.log("Database Connection Successfull");
+  })
+  .catch((err) => {
+    console.log("Error");
+  });
 
-app.set('view engine', 'ejs')
-app.set('views',path.join(__dirname,'views'))
+const app = express();
 
-app.use(methodOverride('_method'))
-app.use(express.urlencoded({extended:true}))
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
 
-app.get('/', (req, res) => {
-    res.render('home')
-})
+app.use(methodOverride("_method"));
+app.use(express.urlencoded({ extended: true }));
+
+app.get("/", (req, res) => {
+  res.render("home");
+});
 
 app.listen(3000, () => {
-    console.log('Listening on Port 3000');
-})
+  console.log("Listening on Port 3000");
+});
