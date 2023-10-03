@@ -3,6 +3,8 @@ const methodOverride = require("method-override");
 const path = require("path");
 const mongoose = require("mongoose");
 
+const Campground = require('./models/campground')
+
 mongoose
   .connect("mongodb://localhost:27017/yelp-camp")
   .then(() => {
@@ -23,6 +25,8 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.render("home");
 });
+
+app.get
 
 app.listen(3000, () => {
   console.log("Listening on Port 3000");
