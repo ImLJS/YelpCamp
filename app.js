@@ -1,7 +1,6 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
-const Joi = require("joi");
 const ejsMate = require("ejs-mate");
 const { campgroundSchema } = require("./schemas.js");
 const catchAsync = require("./utils/catchAsync");
